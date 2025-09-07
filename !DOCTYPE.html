@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    .hidden { display: none; }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background: #ff4081;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #result {
+      padding: 40px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.5);
+      background-image: url("https://drive.google.com/file/d/1twL_2Wh0IG0GFVn8Whjufei651XUd2Hp/view?usp=sharing"); /* <-- Cambia esta URL por tu imagen */
+      background-size: cover;
+      background-position: center;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #result a {
+      margin-top: 20px;
+      background: #25D366;
+      padding: 12px 20px;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Responde estas preguntas 👇</h2>
+  
+  <div id="quiz">
+    <p>1. ¿Cuál es nuestro número?</p>
+    <input type="text" id="q1"><br><br>
+
+    <p>2. ¿Cual es nuestra canción?</p>
+    <input type="text" id="q2"><br><br>
+
+    <p>3. Si aun me sientes ¿Podemos sentirnos por hoy?</p>
+    <input type="text" id="q3"><br><br>
+
+    <p>4. ¿Segura?😎</p>
+    <input type="text" id="q3"><br><br>
+
+    <button onclick="checkAnswers()">Enviar</button>
+  </div>
+  
+  <div id="result" class="hidden">
+    <p>✨ Lista para nuestra cita romántica 💕 ✨</p>
+    <a id="whatsappLink" target="_blank">Confirmar en WhatsApp 💌</a>
+  </div>
+  
+  <script>
+    function checkAnswers() {
+      const a1 = document.getElementById("q1").value.trim();
+      const a2 = document.getElementById("q2").value.trim().toLowerCase();
+      const a3 = document.getElementById("q3").value.trim().toLowerCase();
+      const a4 = document.getElementById("q4").value.trim().toLowerCase();
+
+      if (a1 === "34" && a2 === "Amor de cine" && a3 === "Si" && a4=== "Segura") {
+        document.getElementById("quiz").classList.add("hidden");
+        document.getElementById("result").classList.remove("hidden");
+
+        // Aquí pones TU número en formato internacional (ej: +521XXXXXXXXXX para México)
+        const phone = "+522731201365"; 
+        const message = encodeURIComponent("Ya estoy lista para nuestra cita romántica 💕✨");
+        document.getElementById("whatsappLink").href = `https://wa.me/${phone}?text=${message}`;
+      } else {
+        alert("Alguna respuesta está incorrecta 😅, intenta de nuevo.");
+      }
+    }
+  </script>
+</body>
+</html>
